@@ -1,0 +1,22 @@
+<ion-view title="Entrar" id="page2">
+  <ion-content padding="true" class="has-header">
+    <div>
+      <img src="img/9u4mkQVmTxqSwt6ZQWOQ_Lock-Lock-icon.png" width="auto" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+    </div>
+    <form id="entrar-form1" class="list">
+      <div class="spacer" style="width: 300px; height: 72px;"></div>
+      <ion-list id="entrar-list1">
+        <label class="item item-input" id="entrar-input1">
+          <span class="input-label">Senha</span>
+          <input type="text" placeholder="" ng-model="email_login">
+        </label>
+        <label class="item item-input" id="entrar-input2">
+          <span class="input-label">Senha</span>
+          <input type="password" placeholder="" ng-model="password">
+        </label>
+      </ion-list>
+      <div class="spacer" style="width: 300px; height: 24px;"></div>
+      <a id="entrar-button1" class="button button-royal  button-block icon-left ion-android-unlock" ng-click="vaiporra(email_login, password)">Entrar</a>
+    </form>
+  </ion-content>
+</ion-view>

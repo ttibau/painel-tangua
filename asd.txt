@@ -1,0 +1,4 @@
+ <!-- FIREBASE -->
+    <script src="lib/firebase.js"></script>
+    <!-- ANGULARFIRE -->
+    <script src="lib/angularfire.min.js"></script>

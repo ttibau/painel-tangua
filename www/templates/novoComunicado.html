@@ -1,0 +1,29 @@
+<ion-view title="Novo Comunicado" id="page4">
+  <ion-content padding="true" class="has-header">
+    <div class="list card" id="novoComunicado-card22">
+      <form id="novoComunicado-form2" class="list">
+        <label class="item item-input" id="novoComunicado-input3">
+          <span class="input-label">Título:</span>
+          <input type="text" placeholder="" ng-model="titulo">
+        </label>
+        <label class="item item-input" id="novoComunicado-input5">
+          <span class="input-label">Autor: </span>
+          <input type="text" placeholder="" ng-model="autor">
+        </label>
+        <label class="item item-input" id="novoComunicado-textarea1">
+          <span class="input-label">Mensagem:</span><textarea placeholder="" ng-model="mensagem"></textarea></label>
+        <br />
+        <button class="button button-royal  icon-left ion-ios-reverse-camera-outline" style="top: 50%; left: 25%;">Adicionar imagem</button>
+        <br />
+        <br />
+      </form>
+    </div>
+    <button id="novoComunicado-button4" class="button button-dark  button-block icon-left ion-android-add" ng-click="adicionarComunicado(titulo, data, autor, mensagem)">Criar comunicado</button>
+    <div class="spacer" style="width: 300px; height: 20px;"></div>
+    <div id="novoComunicado-markdown7" style="text-align:center;">
+      <p style="color:#000000;">Lembre-se: para
+        <strong>editar</strong> um comunicado já criado, clique nele na área de comunicados. Mantenha o bom senso em não editar a data e nem o autor após ser criado a edição é apenas para alterar erros e não alterar dados que possam comprometer. </p>
+        <p>Caso haja alteração da data e do autor nos comunicados, nossa equipe irá comunicar à administração.</p>
+    </div>
+  </ion-content>
+</ion-view>
