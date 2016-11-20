@@ -13,12 +13,12 @@
         <label class="item item-input" id="novoComunicado-textarea1">
           <span class="input-label">Mensagem:</span><textarea placeholder="" ng-model="mensagem"></textarea></label>
         <br />
-        <button class="button button-royal  icon-left ion-ios-reverse-camera-outline" style="top: 50%; left: 25%;">Adicionar imagem</button>
+        <button class="button button-royal  icon-left ion-ios-reverse-camera-outline" style="top: 50%; left: 25%;" ng-click="capturaImagem()">Adicionar imagem</button>
         <br />
         <br />
       </form>
     </div>
-    <button id="novoComunicado-button4" class="button button-dark  button-block icon-left ion-android-add" ng-click="adicionarComunicado(titulo, data, autor, mensagem)">Criar comunicado</button>
+    <button id="novoComunicado-button4" class="button button-dark  button-block icon-left ion-android-add" ng-click="adicionarComunicado(titulo, autor, mensagem)">Criar comunicado</button>
     <div class="spacer" style="width: 300px; height: 20px;"></div>
     <div id="novoComunicado-markdown7" style="text-align:center;">
       <p style="color:#000000;">Lembre-se: para

@@ -4,6 +4,11 @@ angular.module('app.services',  [])
 
 }])
 
+.factory('Ref', [function ( ) {
+  return ref = new Firebase('https://transporte-tangua.firebaseio.com/');
+}])
+
+
 .service('BlankService', [function(){
 
 }]);
