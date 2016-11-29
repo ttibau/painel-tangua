@@ -24,8 +24,8 @@ function ($scope, $stateParams, $firebaseArray) {
 
 }])
 
-.controller('novoComunicadoCtrl', ['$scope', '$stateParams', '$firebaseArray',
-function ($scope, $stateParams, $firebaseArray) {
+.controller('novoComunicadoCtrl', ['$scope', '$stateParams', '$firebaseArray', '$http', '$ionicLoading',
+function ($scope, $stateParams, $firebaseArray, $http, $ionicLoading) {
 
   var ref = new Firebase('https://transporte-tangua.firebaseio.com/');
   $scope.comunicados = $firebaseArray(ref.child('comunicados'));
@@ -46,28 +46,46 @@ function ($scope, $stateParams, $firebaseArray) {
     };
 
     $cordovaCamera.getPicture(options).then(function(imageData) {
-      var image = document.getElementById('myImage');
-      image.src = "data:image/jpeg;base64," + imageData;
+      $scope.imagem = "data:image/jpeg;base64," + imageData;
     }, function(err) {
       // error
     });
 
+    $http({
+      url: 'https://api.imgur.com/3/image',
+      authorization: '92fe4e9a9655805',
+      method: 'POST',
+      data: {
+        image: $scope.imagem
+      }
+    })
+      .success(function(data){
+        console.log(data);
+      })
+      .error(function(error){
+        console.log(error);
+      });
 
   };
 
-  $scope.adicionarComunicado = function(titulo, data, autor, mensagem){
+  $scope.adicionarComunicado = function(titulo, autor, corpo){
+    $ionicLoading.show({
+      template: "Enviando dados"
+    });
     var date = new Date();
     var dia = date.getDate();
     var mes = date.getMonth();
     var ano = date.getFullYear();
     var data = dia + '/' + (mes++) + '/' + ano;
-    console.log(data);
-    console.log(titulo, autor, mensagem);
+    console.log(titulo, autor, corpo);
     $scope.comunicados.$add({
       autor: autor,
       data: data,
-      corpo: mensagem,
+      corpo: corpo,
       titulo: titulo
+    }).then(function(response){
+      console.log(response);
+      $ionicLoading.hide();
     });
   };
 
@@ -83,7 +101,6 @@ function ($scope, $stateParams, $firebaseArray) {
 }])
 
 .controller('onibusCtrl', ['$scope', '$ionicPopup', function($scope, $ionicPopup){
-
 
 
 }])
