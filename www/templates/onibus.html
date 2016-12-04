@@ -1,7 +1,13 @@
 <ion-view title="Ônibus" id="onibus">
   <ion-content padding="true" class="has-header">
     <div class="list card">
-      asd
+      <ion-item class="item-thumbnail-left" id="onibuss-list-item14" ng-repeat="bus in buses">
+        <img src="img/zSr6yRmfSNiCrepCgdMG_Apps-File-News-icon.png">
+        <h2 style="white-space:normal;">{{bus.linha}}</h2>
+        <p>{{bus.linha}}</p>
+        <p>{{bus.data}}</p>
+        <p style="..."><span class="ion-person"></span> {{bus.autor}}</p>
+      </ion-item>
     </div>
   </ion-content>
 </ion-view>

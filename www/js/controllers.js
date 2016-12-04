@@ -30,6 +30,7 @@ function ($scope, $stateParams, $firebaseArray, $http, $ionicLoading) {
   var ref = new Firebase('https://transporte-tangua.firebaseio.com/');
   $scope.comunicados = $firebaseArray(ref.child('comunicados'));
 
+
   $scope.capturaImagem = function(){
 
     var options = {
@@ -51,6 +52,11 @@ function ($scope, $stateParams, $firebaseArray, $http, $ionicLoading) {
       // error
     });
 
+    // PRECISO DESCOBRIR EM QUE MOMENTO ELE INICIARÁ IONICLOADING...
+    $ionicLoading.show({
+      template: 'Enviando imagem p/ servidor'
+    });
+
     $http({
       url: 'https://api.imgur.com/3/image',
       authorization: '92fe4e9a9655805',
@@ -61,16 +67,18 @@ function ($scope, $stateParams, $firebaseArray, $http, $ionicLoading) {
     })
       .success(function(data){
         console.log(data);
+        $ionicLoading.hide();
       })
       .error(function(error){
         console.log(error);
+        $ionicLoading.hide();
       });
 
   };
 
   $scope.adicionarComunicado = function(titulo, autor, corpo){
     $ionicLoading.show({
-      template: "Enviando dados"
+      template: "Enviando dados..."
     });
     var date = new Date();
     var dia = date.getDate();
@@ -84,6 +92,7 @@ function ($scope, $stateParams, $firebaseArray, $http, $ionicLoading) {
       corpo: corpo,
       titulo: titulo
     }).then(function(response){
+      // APÓS O ENVIO, SERÁ CHAMADO UM MODAL INFORMANDO O SUCESSO OU ERRO E VOLTARÁ PARA A TELA DE COMUNICADOS
       console.log(response);
       $ionicLoading.hide();
     });
@@ -100,8 +109,12 @@ function ($scope, $stateParams, $firebaseArray, $http, $ionicLoading) {
 
 }])
 
-.controller('onibusCtrl', ['$scope', '$ionicPopup', function($scope, $ionicPopup){
+.controller('onibusCtrl', ['$scope', '$ionicPopup', '$firebaseArray', function($scope, $ionicPopup, $firebaseArray){
 
+  var ref = new Firebase('https://transporte-tangua.firebaseio.com/');
+  $scope.buses = $firebaseArray(ref.child('onibus'));
+
+  console.log($scope.buses);
 
 }])
 
