@@ -2,7 +2,7 @@
   <ion-content padding="true" class="has-header">
     <div class="list card" id="comunicados-card21">
       <a ui-sref="novoComunicado" id="comunicados-button3" class="button button-assertive  button-block icon-left ion-android-add">Criar um novo comunicado</a>
-      <ion-item class="item-thumbnail-left" id="comunicados-list-item14" ng-repeat="comunicado in comunicados | orderBy: data">
+      <ion-item class="item-thumbnail-left" id="comunicados-list-item14" ng-repeat="comunicado in comunicados | orderBy: data" ng-click="comunicadosTeste(comunicado.titulo, comunicado.corpo, comunicado.data, comunicado.autor)">
         <img src="img/zSr6yRmfSNiCrepCgdMG_Apps-File-News-icon.png">
         <h2 style="white-space:normal;">{{comunicado.titulo}}</h2>
         <p>{{comunicado.corpo}}</p>

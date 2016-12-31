@@ -15,12 +15,31 @@ function ($scope, $stateParams, $http, $firebaseAuth, $location) {
 
 }])
 
-.controller('comunicadosCtrl', ['$scope', '$stateParams', '$firebaseArray',
-function ($scope, $stateParams, $firebaseArray) {
+.controller('comunicadosCtrl', ['$scope', '$stateParams', '$firebaseArray', '$ionicLoading',
+function ($scope, $stateParams, $firebaseArray, $ionicLoading) {
 
   var ref = new Firebase('https://transporte-tangua.firebaseio.com/');
   $scope.comunicados = $firebaseArray(ref.child('comunicados'));
   console.log($scope.comunicados);
+  $ionicLoading.show({
+    template: 'Carregando...'
+  });
+
+  $scope.comunicados.$loaded(
+    function(x){
+      $ionicLoading.hide();
+    }, function(err){
+      console.log(err);
+    });
+
+  $scope.comunicadosTeste = function(titulo, corpo, data, autor){
+    console.log(titulo + corpo + data + autor);
+
+    // todos os dados vindo do comunicado estão aqui
+    // criar factory -> enviar dados para factory -> criar template e configurar -> Jogar dados 
+    // da factory para o controller do template criado
+
+  };
 
 }])
 
@@ -29,7 +48,6 @@ function ($scope, $stateParams, $firebaseArray, $http, $ionicLoading) {
 
   var ref = new Firebase('https://transporte-tangua.firebaseio.com/');
   $scope.comunicados = $firebaseArray(ref.child('comunicados'));
-
 
   $scope.capturaImagem = function(){
 

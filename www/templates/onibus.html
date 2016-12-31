@@ -1,12 +1,18 @@
 <ion-view title="Ônibus" id="onibus">
   <ion-content padding="true" class="has-header">
     <div class="list card">
+      <center><span class=ion-arrow-right-c"></span> Ida | <span class="ion-arrow-left-c"></span> Volta | <span class="ion-ios-personadd"></span> Representante | <span class="ion-connection-bars"></span> Situação | <span class="ion-loop"></span> Status | <span class="ion-ios-people"></span> Lotação </center>
+    </div>
+    <div class="list card">
       <ion-item class="item-thumbnail-left" id="onibuss-list-item14" ng-repeat="bus in buses">
         <img src="img/school-bus-icon.png">
         <h2 style="white-space:normal;">{{bus.linha}}</h2>
-        <p>{{bus.linha}}</p>
-        <p>{{bus.data}}</p>
-        <p style="..."><span class="ion-person"></span> {{bus.autor}}</p>
+        <p class="ion-arrow-right-c"> {{bus.ida}}</p>
+        <p class="ion-arrow-left-c"> {{bus.volta}}</p>
+        <p class="ion-ios-personadd"> {{bus.representante}}</p>
+        <p class="ion-connection-bars"> {{bus.situacao}}</p>
+        <p class="ion-loop"> {{bus.status}}</p>
+        <p class="ion-ios-people"> {{bus.lotacao}}</p>
       </ion-item>
     </div>
   </ion-content>
